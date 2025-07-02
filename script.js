@@ -1,17 +1,11 @@
-function reverseArr (arr){
-    let start = 0;
-    let end = arr.length - 1;
-
-    while(start<end){
-    let temp = arr[start]
-    arr[start] = arr[end]
-    arr[end] = temp
-
-    start++
-    end--;
+function findElement (arr ,target){
+    
+    for (let i = 0; i < arr.length; i++){
+        if(arr[i] === target){
+            return true
+        }
     }
-    return arr
-}
-
-const re = reverseArr([1,2,3,4,5,6,7,8,9])
-console.log(re);
+        return false
+    }
+const g = findElement([1,2,3,7] ,0 )
+console.log(g);
