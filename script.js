@@ -1,24 +1,16 @@
-function binarySearch (arr,target){
-  let start = 0;
-  let end = arr.length - 1;
+let n = 5;
 
-  while (start <= end){
-    let mid = Math.floor(start + end/2)
-
-    if(arr[mid] === target){
-      return true
-    }else if(arr[mid] < target){
-      start = mid + 1;
-
-    }else {
-      end = mid - 1;
-    }
+for(let i = 0; i < n; i++){
+let sar = ""
+  for(let j = 0; j< i; j++){
+    sar = sar + ' '
   }
-
-  return false
+  for(let j = 0; j<2*n -(2*i +1) ; j++){
+    sar = sar + "*"
+  }
+  for(let j = 0; j< i; j++){
+    sar = sar + " "
+  }
+  console.log(sar);
+  
 }
-
-const r = binarySearch([3,6,9,12,15,18,21],)
-
-console.log(r);
-
