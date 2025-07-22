@@ -1,31 +1,22 @@
-function convertToRoman(num) {
-  const mappingRoman = [
-    {symbol:'M', value : 1000},
-     {symbol:'CM', value : 900},
-      {symbol:'D', value : 500},
-       {symbol:'CD', value : 400},
-        {symbol:'C', value : 100},
-         {symbol:'XC', value : 90},
-          {symbol:'L', value : 50},
-           {symbol:'XL', value : 40},
-            {symbol:'X', value : 10},
-             {symbol:'IX', value : 9},
-              {symbol:'V', value : 5},
-               {symbol:'IV', value : 4},
-                {symbol:'I', value : 1}
- 
-  ]
- 
-  let result = ''
- 
-  mappingRoman.forEach((el) => {
-    while(num >= el.value){
-      result += el.symbol
-      num -= el.value;
+function rot13(str) {
+  let result = "";
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    let code = str.charCodeAt(i);
+
+    // Check if uppercase letter (A-Z)
+    if (code >= 65 && code <= 90) {
+      // Rotate 13 places and wrap around if needed
+      let newCode = ((code - 65 + 13) % 26) + 65;
+      result += String.fromCharCode(newCode);
+    } else {
+      // If not A-Z, keep character as is (space, punctuation, etc.)
+      result += char;
     }
-  })
- 
-  return result
- }
- 
- convertToRoman(36);
+  }
+
+  return result;
+}
+
+console.log(rot13("SERR PBQR PNZC")); // "FREE CODE CAMP"
