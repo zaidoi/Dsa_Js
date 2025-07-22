@@ -1,16 +1,12 @@
-let n = 5;
-
-for(let i = 0; i < n; i++){
-let sar = ""
-  for(let j = 0; j< i; j++){
-    sar = sar + ' '
+function palindrome(str) {
+  let newstr = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+  let reverseStr = [...newstr].reverse().join('')
+  if(newstr === reverseStr){
+    return true
+  }else{
+    return false
   }
-  for(let j = 0; j<2*n -(2*i +1) ; j++){
-    sar = sar + "*"
-  }
-  for(let j = 0; j< i; j++){
-    sar = sar + " "
-  }
-  console.log(sar);
   
 }
+
+palindrome("eye");
