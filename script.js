@@ -1,22 +1,16 @@
-function rot13(str) {
-  let result = "";
-
-  for (let i = 0; i < str.length; i++) {
-    let char = str[i];
-    let code = str.charCodeAt(i);
-
-    // Check if uppercase letter (A-Z)
-    if (code >= 65 && code <= 90) {
-      // Rotate 13 places and wrap around if needed
-      let newCode = ((code - 65 + 13) % 26) + 65;
-      result += String.fromCharCode(newCode);
-    } else {
-      // If not A-Z, keep character as is (space, punctuation, etc.)
-      result += char;
+function telephoneCheck(str) {
+  let result = false;
+ 
+  let digits = str.replace(/\D/g,"");
+  
+  if(digits.length === 10 || (digits.length === 11 && digits[0] == '1')){
+    let testing = /^(1\s?)?(\(\d{3}\)|\d{3})[\s-]?\d{3}[\s-]?\d{4}$/.test(str);
+    if(testing){
+      result = true
     }
   }
-
-  return result;
-}
-
-console.log(rot13("SERR PBQR PNZC")); // "FREE CODE CAMP"
+ 
+  return result
+ }
+ 
+ telephoneCheck("555-555-5555");
