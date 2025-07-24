@@ -12,7 +12,7 @@ function checkCashRegister(price, cash, cid) {
     console.log({status:"INSUFFICIENT_FUNDS", change:[]})
   }else if(change === totalCashInDesk){
     console.log({status:"CLOSED", change:[...cid]})
-  }}else{
+  }else{
     let reverseCid = cid.reverse();
     const currencyUnit = {
       "PENNY": 0.01,
@@ -54,7 +54,7 @@ function checkCashRegister(price, cash, cid) {
     }
   }
   
-
+}
 
 
 
