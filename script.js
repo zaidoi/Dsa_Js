@@ -28,36 +28,59 @@ function checkCashRegister(price, cash, cid) {
   
     let changeArray = [];
   
-    for (let i = 0; i < reverseCid.length; i++) {
-      let coinName = reverseCid[i][0];
-      let coinTotal = reverseCid[i][1];
-      let coinValue = currencyUnit[coinName];
-      let coinUsed = 0;
-  
-      while (change >= coinValue && coinTotal > 0) {
-        change -= coinValue;
-        coinTotal -= coinValue;
-        coinUsed += coinValue;
-  
-        change = Math.round(change * 100) / 100;
+    for(let i = 0; i < reverseCid.length; i++){
+      let coinName = reverseCid[i][0]
+      console.log(`CoinName: ${coinName}`);
+      
+      let coinTotal = reverseCid[i][1]
+      console.log(`CoinTotal: ${coinTotal}`);
+
+      let coinValue = currencyUnit[coinName]
+      console.log(`CoinValue: ${coinValue}`);
+
+      let coinUsed = 0
+
+      while(change >=coinValue && coinTotal > 0){
+        change -= coinValue
+        coinTotal -= coinValue
+        coinUsed += coinValue
+      console.log(`CoinUsed: ${coinUsed}`);
+        
+
+        change = Math.round(change * 100)/100;
       }
-  
-      if (coinUsed > 0) {
-        changeArray.push([coinName, coinUsed]);
+      if(coinUsed > 0){
+        changeArray.push([coinName,coinUsed])
       }
     }
-  
-    if (change > 0) {
-      return { status: "INSUFFICIENT_FUNDS", change: [] };
-    } else {
-      return { status: "OPEN", change: changeArray };
+    if(change > 0){
+      return {status: "INSUFFICIENT_FUNDS", change:[]}
+    }else{
+      return { status:"OPEN", change:changeArray}
     }
+   
   }
   
 }
 
 
 
-checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
+checkCashRegister(3.25, 20, [["PENNY", 0.5], ["NICKEL", 5], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 200]]);
+
+// 0.5 >= 100
+// 0.5 >= 20
+// 0.5 >= 10
+// 0.5 >= 5
+// 0.5 >= 1
+// 0.5 >= 0.25
+// 0.4 >=0.25
+// 0.15 >= 0.25
+//0.15 >= 0.1
+//0.05 >= 0.1
+// 0.05 >= 0.05
+// 0 >=0
+
+
+
 
 
